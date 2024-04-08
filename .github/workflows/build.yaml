@@ -16,3 +16,6 @@ jobs:
         builder: 'gcr.io/paketo-buildpacks/builder:base'
         publish: true
         debug_mode: true
+
+    - name: print
+      run: echo $GITHUB_OUTPUT
