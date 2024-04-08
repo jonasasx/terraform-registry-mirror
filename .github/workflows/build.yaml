@@ -7,15 +7,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build image
-      uses: mamezou-tech/buildpacks-action@master
-      with:
-        image: 'ghcr.io/jonasasx/terraform-registry-mirror'
-        tag: '0.0.1'
-        path: './'
-        builder: 'gcr.io/paketo-buildpacks/builder:base'
-        publish: true
-        debug_mode: true
+    - name: get pack
+      run: (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.33.2/pack-v0.33.2-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
 
-    - name: print
-      run: echo $GITHUB_OUTPUT
+    - name: build
+      run: |-
+        pack build ghcr.io/jonasasx/terraform-registry-mirror:0.0.1 \
+        --path ./  \
+        --builder gcr.io/paketo-buildpacks/builder:base \
+        --publish
