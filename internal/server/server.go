@@ -91,7 +91,7 @@ func (s server) Version(c *gin.Context) {
 						panic(err)
 					}
 				}
-				response.Archives[platform.Os+" "+platform.Arch] = Build{
+				response.Archives[platform.Os+"_"+platform.Arch] = Build{
 					Url:    packageItem.DownloadUrl,
 					Hashes: hashes,
 				}
