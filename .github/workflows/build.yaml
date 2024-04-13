@@ -1,0 +1,27 @@
+name: Build and publish
+run-name: ${{ github.actor }} 🚀
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: get pack
+      run: (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.33.2/pack-v0.33.2-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
+
+    - name: Login to GitHub Packages
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: build
+      run: |-
+        pack build ghcr.io/jonasasx/terraform-registry-mirror:0.0.2 \
+        --path ./  \
+        --builder paketobuildpacks/builder-jammy-base \
+        --publish
