@@ -79,10 +79,10 @@ func (s server) Version(c *gin.Context) {
 						panic(err)
 					}
 				}
-				cacheKey = fmt.Sprintf("hashes:%s:%s", packageItem.DownloadUrl, packageItem.ShasumsUrl)
+				cacheKey = fmt.Sprintf("hashes:%s:%s", packageItem.DownloadUrl)
 				hashes, _ := s.hashesCache.Get(c, cacheKey)
 				if hashes == nil {
-					hashes, err = hash.GetHashes(packageItem.DownloadUrl, packageItem.ShasumsUrl)
+					hashes, err = hash.GetHashes(packageItem.DownloadUrl)
 					if err != nil {
 						panic(err)
 					}
