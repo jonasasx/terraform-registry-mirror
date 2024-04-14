@@ -48,7 +48,7 @@ Choose one of the installation methods:
 
 ### Docker
 
-    docker run -d -p 8080:8080 ghcr.io/jonasasx/terraform-registry-mirror:0.0.6
+    docker run -d -p 8080:8080 ghcr.io/jonasasx/terraform-registry-mirror:0.0.7
 
 ### Docker Compose
 
@@ -56,7 +56,7 @@ Choose one of the installation methods:
     
     services:
       terraform-registry-mirror:
-        image: ghcr.io/jonasasx/terraform-registry-mirror:0.0.6
+        image: ghcr.io/jonasasx/terraform-registry-mirror:0.0.7
         ports:
           - "8080:8080"
 
