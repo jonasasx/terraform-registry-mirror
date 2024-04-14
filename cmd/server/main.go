@@ -20,6 +20,7 @@ func main() {
 	router.GET("/healthz", func(c *gin.Context) {
 		c.JSON(http.StatusOK, "OK")
 	})
+	router.StaticFile("/", "public/index.html")
 
 	err := router.Run("0.0.0.0:8080")
 	if err != nil {

@@ -34,6 +34,26 @@ jobs:
         with:
           version: ${{ env.KIND_VERSION }}
           node_image: ${{ env.KIND_IMAGE }}
+
+      - name: Converts Markdown to HTML
+        uses: jaywcjlove/markdown-to-html-cli@main
+        with:
+          source: README.md
+          output: index.html
+          github-corners: https://github.com/jaywcjlove/markdown-to-html-cli
+          markdown-style-theme: dark
+
+      - name: Setup jq
+        uses: dcarbone/install-jq-action@v2
+
+      - name: Install yq
+        run: pip install yq
+
+      - name: Add index.html
+        run: |
+          echo '{"data": {}}' | jq --rawfile readme index.html '.data."index.html" |= $readme' | yq -y >> charts/terraform-registry-mirror/templates/cm.yaml
+          cat charts/terraform-registry-mirror/templates/cm.yaml
+
       - name: Run chart-testing
         run: ct lint-and-install --validate-maintainers=false --charts ${{ env.CHART_DIR }}
       - name: Install chart-releaser
