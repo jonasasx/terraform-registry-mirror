@@ -35,7 +35,7 @@ jobs:
           version: ${{ env.KIND_VERSION }}
           node_image: ${{ env.KIND_IMAGE }}
       - name: Run chart-testing
-        run: ct lint-and-install --validate-maintainers=false --charts deploy/helm
+        run: ct lint-and-install --validate-maintainers=false --charts ${{ env.CHART_DIR }}
       - name: Install chart-releaser
         run: |
           wget https://github.com/helm/chart-releaser/releases/download/v1.3.0/chart-releaser_1.3.0_linux_amd64.tar.gz
