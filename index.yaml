@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  terraform-registry-mirror:
+  - apiVersion: v2
+    appVersion: 0.0.6
+    created: "2024-04-14T05:16:58.715581003Z"
+    description: A Helm chart for Kubernetes
+    digest: 28fb9a77e6b4d9b47660f4521e3ef011882933d8bb0b08e17ccb65fc9b69c193
+    name: terraform-registry-mirror
+    type: application
+    urls:
+    - https://github.com/jonasasx/terraform-registry-mirror/releases/download/terraform-registry-mirror-0.1.0/terraform-registry-mirror-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-04-14T05:16:58.715586704Z"
