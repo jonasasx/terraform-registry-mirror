@@ -1,5 +1,5 @@
-name: Build and publish
-run-name: ${{ github.actor }} 🚀
+name: Build and publish service
+run-name: Build and publish service 🚀
 on: [push]
 jobs:
   build:

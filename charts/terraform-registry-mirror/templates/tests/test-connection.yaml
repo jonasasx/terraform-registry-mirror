@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "terraform-registry-mirror.fullname" . }}-test-connection"
+  labels:
+    {{- include "terraform-registry-mirror.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "terraform-registry-mirror.fullname" . }}:{{ .Values.service.port }}/healthz']
+  restartPolicy: Never
