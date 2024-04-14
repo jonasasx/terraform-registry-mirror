@@ -3,7 +3,7 @@ run-name: Publish helm charts 🚀
 on: [push]
 env:
   CR_PACKAGE_PATH: .cr-release-packages
-  HELM_REP: helm-charts
+  HELM_REP: terraform-registry-mirror
   GH_OWNER: jonasasx
   CHART_DIR: charts/terraform-registry-mirror
   KIND_VERSION: v0.17.0
