@@ -2,6 +2,10 @@
 
 ![Service Logo](https://github.com/jonasasx/terraform-registry-mirror/blob/master/assets/logo.png?raw=true)
 
+## Source Code
+
+https://github.com/jonasasx/terraform-registry-mirror
+
 ## Overview
 
 Welcome to the Terraform Registry Mirror Service repository!
