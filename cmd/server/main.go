@@ -10,7 +10,13 @@ import (
 )
 
 func main() {
-	router := gin.Default()
+	router := gin.New()
+
+	router.Use(gin.LoggerWithConfig(gin.LoggerConfig{
+		SkipPaths: []string{"/healthz"},
+	}))
+	router.Use(gin.Recovery())
+
 	cacheClient := cache.New(365*24*time.Hour, 365*24*time.Hour)
 	cacheStore := go_cache.NewGoCache(cacheClient)
 	serverInstance := server.NewServer(cacheStore)
