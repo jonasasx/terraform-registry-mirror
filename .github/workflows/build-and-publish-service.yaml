@@ -9,17 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Create public dir
-      run: mkdir public
-
-    - name: Converts Markdown to HTML
-      uses: jaywcjlove/markdown-to-html-cli@main
-      with:
-        source: README.md
-        output: public/index.html
-        github-corners: https://github.com/jaywcjlove/markdown-to-html-cli
-        markdown-style-theme: dark
-
     - name: get pack
       run: (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.33.2/pack-v0.33.2-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
 
