@@ -9,6 +9,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Create public dir
+      run: mkdir public
+
     - name: Converts Markdown to HTML
       uses: jaywcjlove/markdown-to-html-cli@main
       with:
