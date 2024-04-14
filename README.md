@@ -1,6 +1,6 @@
 # Terraform Registry Mirror
 
-![Service Logo](assets/logo.png)
+![Service Logo](https://github.com/jonasasx/terraform-registry-mirror/blob/master/assets/logo.png?raw=true)
 
 ## Overview
 
