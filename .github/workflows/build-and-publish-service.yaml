@@ -21,7 +21,7 @@ jobs:
 
     - name: build
       run: |-
-        pack build ghcr.io/jonasasx/terraform-registry-mirror:0.0.7 \
+        pack build ghcr.io/jonasasx/terraform-registry-mirror:0.0.8 \
         --path ./  \
         --builder paketobuildpacks/builder-jammy-base \
         --publish

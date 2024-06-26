@@ -51,7 +51,7 @@ func (s server) Index(c *gin.Context) {
 	for _, version := range versions {
 		response[version.Version] = struct{}{}
 	}
-	c.JSON(http.StatusOK, IndexResponse{Versions: response})
+	c.AsciiJSON(http.StatusOK, IndexResponse{Versions: response})
 }
 
 func (s server) Version(c *gin.Context) {
@@ -98,7 +98,7 @@ func (s server) Version(c *gin.Context) {
 			}
 		}
 	}
-	c.JSON(http.StatusOK, response)
+	c.AsciiJSON(http.StatusOK, response)
 }
 
 type IndexResponse struct {
