@@ -35,9 +35,9 @@ func GetPackage(hostname string, namespace string, pkg string, version string, o
 }
 
 type VersionsResponse struct {
+	Warnings interface{} `json:"warnings"`
 	Id       string      `json:"id"`
 	Versions []Version   `json:"versions"`
-	Warnings interface{} `json:"warnings"`
 }
 
 type Version struct {
@@ -62,11 +62,11 @@ type DownloadResponse struct {
 	Shasum              string   `json:"shasum"`
 	SigningKeys         struct {
 		GpgPublicKeys []struct {
+			SourceUrl      interface{} `json:"source_url"`
 			KeyId          string      `json:"key_id"`
 			AsciiArmor     string      `json:"ascii_armor"`
 			TrustSignature string      `json:"trust_signature"`
 			Source         string      `json:"source"`
-			SourceUrl      interface{} `json:"source_url"`
 		} `json:"gpg_public_keys"`
 	} `json:"signing_keys"`
 }
