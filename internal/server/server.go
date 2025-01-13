@@ -74,7 +74,7 @@ func (s server) Version(c *gin.Context) {
 						panic(err)
 					}
 				}
-				cacheKey = fmt.Sprintf("hashes:%s:%s", packageItem.DownloadUrl)
+				cacheKey = fmt.Sprintf("hashes:%s", packageItem.DownloadUrl)
 				hashes, _ := s.hashesCache.Get(c, cacheKey)
 				if hashes == nil {
 					hashes, err = hash.GetHashes(packageItem.DownloadUrl)
