@@ -35,22 +35,17 @@ func (s server) Index(c *gin.Context) {
 	hostname := c.Param("hostname")
 	namespace := c.Param("namespace")
 	pkg := c.Param("pkg")
-	cacheKey := fmt.Sprintf("versions:%s:%s:%s", hostname, namespace, pkg)
-	versions, err := s.versionsCache.Get(c, cacheKey)
-	if versions == nil {
-		versions, err = api.GetVersions(hostname, namespace, pkg)
-		if err != nil {
-			panic(err)
-		}
-		err := s.versionsCache.Set(c, cacheKey, versions)
-		if err != nil {
-			panic(err)
-		}
+
+	versions, err := api.GetVersions(hostname, namespace, pkg)
+	if err != nil {
+		panic(err)
 	}
+
 	response := make(map[string]struct{})
 	for _, version := range versions {
 		response[version.Version] = struct{}{}
 	}
+
 	c.AsciiJSON(http.StatusOK, IndexResponse{Versions: response})
 }
 
